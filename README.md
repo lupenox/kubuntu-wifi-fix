@@ -68,7 +68,7 @@ nmcli device
 
 ## 📸 Screenshot
 
-<img src="images/SC_Bash_CL.png" alt="Bash Troubleshooting Process" />
+![](2025-03-12-15-58-09.png)
 
 *This screenshot shows the detailed process of identifying, removing, and reinstalling drivers to restore Wi-Fi functionality.*
 
