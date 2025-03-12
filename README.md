@@ -67,8 +67,7 @@ nmcli device
     Persistence: Ensured the driver loaded correctly after reboots and was persistent across sessions.
 
 ## 📸 Screenshot
-
-![](2025-03-12-15-58-09.png)
+![Getting Started](images/SC_Bash_CL.png)
 
 *This screenshot shows the detailed process of identifying, removing, and reinstalling drivers to restore Wi-Fi functionality.*
 
