@@ -1,17 +1,24 @@
-Kubuntu Wi-Fi Adapter Fix (TP-Link AC600)
+# Kubuntu Wi-Fi Adapter Fix (TP-Link AC600)
 
 This project documents the troubleshooting and resolution process for fixing the TP-Link AC600 (Realtek RTL8811AU) Wi-Fi adapter on a Kubuntu PC.
-🚨 Issue Description
 
-    Problem: Wi-Fi adapter was not detecting any networks.
-    Symptoms:
-        iwconfig showed no active wireless extensions.
-        Wi-Fi device listed as disconnected in nmcli device.
-        Restarting the Network Manager had no effect.
+---
 
-⚙️ Fix Steps
-1. Verify Adapter Presence
+## 🚨 Issue Description
 
+- **Problem:** Wi-Fi adapter was not detecting any networks.
+- **Symptoms:**
+  - `iwconfig` showed no active wireless extensions.
+  - Wi-Fi device listed as disconnected in `nmcli device`.
+  - Restarting the Network Manager had no effect.
+
+---
+
+## ⚙️ Fix Steps
+
+### 1. Verify Adapter Presence
+
+```bash
 lsusb
 
     Confirmed the TP-Link AC600 was detected by the system.
@@ -59,11 +66,11 @@ nmcli device
     Version Management: Learned the importance of aligning driver versions with Linux kernel versions.
     Persistence: Ensured the driver loaded correctly after reboots and was persistent across sessions.
 
-📸 Screenshots
+## 📸 Screenshot
 
-    Driver installation process.
-    Wi-Fi adapter detected via lsusb.
-    Successful connection using nmcli.
+![Bash Troubleshooting Process](./SC_Bash_CL.png)
+
+*This screenshot shows the detailed process of identifying, removing, and reinstalling drivers to restore Wi-Fi functionality.*
 
 ✅ Result
 
@@ -74,6 +81,4 @@ nmcli device
 🛠️ License
 
 MIT License
-
-    This project highlights my skills in Linux troubleshooting, network configuration, and kernel module management. It reflects my determination in resolving complex system-level issues.
 
