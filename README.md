@@ -1,93 +1,79 @@
-# Kubuntu Wi-Fi Adapter Fix (TP-Link AC600)
+Kubuntu Wi-Fi Adapter Fix (TP-Link AC600)
 
 This project documents the troubleshooting and resolution process for fixing the TP-Link AC600 (Realtek RTL8811AU) Wi-Fi adapter on a Kubuntu PC.
+🚨 Issue Description
 
----
+    Problem: Wi-Fi adapter was not detecting any networks.
+    Symptoms:
+        iwconfig showed no active wireless extensions.
+        Wi-Fi device listed as disconnected in nmcli device.
+        Restarting the Network Manager had no effect.
 
-## 🔄 Issue Description
-- **Problem:** Wi-Fi adapter not detecting any networks.
-- **Symptoms:**
-  - `iwconfig` showed no active wireless extensions.
-  - Wi-Fi device listed as disconnected in `nmcli device`.
-  - Network Manager restart had no effect.
+⚙️ Fix Steps
+1. Verify Adapter Presence
 
----
-
-## ⚙️ Fix Steps
-
-### 1. **Verify Adapter Presence**
-```bash
 lsusb
-```
-- Confirmed the TP-Link AC600 was detected by the system.
 
-### 2. **Check Installed Drivers**
-```bash
+    Confirmed the TP-Link AC600 was detected by the system.
+
+2. Check Installed Drivers
+
 dkms status
-```
-- Identified existing drivers but found module issues.
 
-### 3. **Remove Faulty Drivers**
-```bash
+    Identified that existing drivers were present but not functioning correctly.
+
+3. Remove Faulty Drivers
+
 sudo rm -rf /var/lib/dkms/rtl8812au
 sudo rm -rf /var/lib/dkms/rtl88x2bu
-```
 
-### 4. **Install Drivers from Source**
-```bash
+4. Install Drivers from Source
+
 git clone https://github.com/aircrack-ng/rtl8812au.git
 cd rtl8812au
 sudo mv ~/rtl8812au /usr/src/rtl8812au-5.13.6
 sudo dkms add -m rtl8812au -v 5.13.6
 sudo dkms build -m rtl8812au -v 5.13.6
 sudo dkms install -m rtl8812au -v 5.13.6
-```
 
-### 5. **Load the Module**
-```bash
+5. Load the Module
+
 sudo modprobe 88XXau
-```
 
-### 6. **Restart Network Manager**
-```bash
+6. Restart Network Manager
+
 sudo systemctl restart NetworkManager
-```
 
-### 7. **Connect to Wi-Fi**
-```bash
+7. Connect to Wi-Fi
+
 nmcli device wifi connect "YourNetworkName" password "YourPassword"
-```
 
-### 8. **Verify Connection**
-```bash
+8. Verify Connection
+
 nmcli device
-```
 
----
+📚 Lessons Learned
 
-## 🛠️ Lessons Learned
-- Understanding kernel modules and troubleshooting DKMS.
-- Using `nmcli` and `iwconfig` for deeper network diagnostics.
-- Importance of modular builds and dependency management on Linux.
+    Kernel Modules: Gained a deeper understanding of kernel module installation and troubleshooting with DKMS.
+    Network Diagnostics: Utilized tools like nmcli and iwconfig for diagnosing network issues.
+    Version Management: Learned the importance of aligning driver versions with Linux kernel versions.
+    Persistence: Ensured the driver loaded correctly after reboots and was persistent across sessions.
 
----
+📸 Screenshots
 
-## 📸 Screenshots
-1. Driver installation process.
-2. Wi-Fi adapter detected via `lsusb`.
-3. Successful network connection using `nmcli`.
+    Driver installation process.
+    Wi-Fi adapter detected via lsusb.
+    Successful connection using nmcli.
 
----
+✅ Result
 
-## ✅ Result
-- Wi-Fi adapter successfully detected and connected.
-- Network functionality restored after comprehensive troubleshooting.
+    Wi-Fi adapter successfully detected and connected.
+    Network functionality restored and persisted across reboots.
+    Solidified expertise in Linux driver troubleshooting and module installation.
 
----
+🛠️ License
 
-## 📜 License
 MIT License
 
----
+    This project highlights my skills in Linux troubleshooting, network configuration, and kernel module management. It reflects my determination in resolving complex system-level issues.
 
-This documentation showcases my problem-solving skills, Linux expertise, and determination in resolving complex system-level issues.
