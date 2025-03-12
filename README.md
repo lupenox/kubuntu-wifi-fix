@@ -68,7 +68,7 @@ nmcli device
 
 ## 📸 Screenshot
 
-![Bash Troubleshooting Process](https://raw.githubusercontent.com/lupenox/kubuntu-wifi-fix/main/images/SC_Bash_CL.png)
+<img src="images/SC_Bash_CL.png" alt="Bash Troubleshooting Process" />
 
 *This screenshot shows the detailed process of identifying, removing, and reinstalling drivers to restore Wi-Fi functionality.*
 
